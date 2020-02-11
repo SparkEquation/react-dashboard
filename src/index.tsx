@@ -6,6 +6,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { MenuContext } from './context/context';
+import { ThemeProvider } from '@material-ui/core';
+import baseTheme from './baseTheme';
 
 
 const Main: React.FC<{}> = () => {
@@ -13,7 +15,9 @@ const Main: React.FC<{}> = () => {
     return (
         <BrowserRouter>
             <MenuContext.Provider value={{ menuState, setMenuState }}>
-                <App />
+                <ThemeProvider theme={baseTheme}>
+                    <App />
+                </ThemeProvider>
             </MenuContext.Provider>
         </BrowserRouter>
     );
