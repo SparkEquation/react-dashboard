@@ -2,7 +2,7 @@ import React from 'react';
 
 const Dashboard: React.FC<{}> = () => {
     return (
-        <div>Dashboard is ready</div>
+        <div data-testid="dashboard">Dashboard is ready</div>
     );
 };
 

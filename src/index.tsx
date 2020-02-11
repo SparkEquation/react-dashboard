@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import 'typeface-roboto';
 import './index.css';
-import Dashboard from './components/Dashboard';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { MenuContext } from './context/context';
 
 
-const App: React.FC<{}> = () => {
+const Main: React.FC<{}> = () => {
     const [menuState, setMenuState] = useState();
     return (
         <BrowserRouter>
             <MenuContext.Provider value={{ menuState, setMenuState }}>
-                <Dashboard />
+                <App />
             </MenuContext.Provider>
         </BrowserRouter>
     );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Main />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
