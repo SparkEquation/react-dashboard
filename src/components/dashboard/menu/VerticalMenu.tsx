@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
@@ -9,46 +9,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
-import PeopleIcon from '@material-ui/icons/People';
-import DnsRoundedIcon from '@material-ui/icons/DnsRounded';
-import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
-import PublicIcon from '@material-ui/icons/Public';
-import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
-import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
-import TimerIcon from '@material-ui/icons/Timer';
-import SettingsIcon from '@material-ui/icons/Settings';
-import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 import { Omit } from '@material-ui/types';
-
-type TCategoryChild = {
-    id: string,
-    icon: JSX.Element,
-    to: string,
-    isExact?: boolean
-}
-
-type TCategory = {
-    id: string,
-    children: TCategoryChild[]
-};
-
-const categories: TCategory[] = [
-    {
-        id: 'Develop',
-        children: [
-            { id: 'Authentication', icon: <PeopleIcon />, to: '/dashboard/authentication' },
-            { id: 'Database', icon: <DnsRoundedIcon />, to: '/dashboard/database' },
-            { id: 'UI Kit', icon: <SettingsInputComponentIcon />, to: '/dashboard/uikit' },
-        ],
-    },
-    {
-        id: 'Quality',
-        children: [
-            { id: 'Analytics', icon: <SettingsIcon />, to: '/dashboard/analytics' },
-            { id: 'Performance', icon: <TimerIcon />, to: '/dashboard/analytics' },
-        ],
-    },
-];
+import { MenuContext } from '../../../context/menuContext';
+import menu from './menu';
 
 const useStyles = makeStyles((theme: Theme) => ({
     categoryHeader: {
@@ -67,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         },
         '& a': {
             color: 'rgba(255, 255, 255, 0.7)',
+            textDecoration: 'none'
         }
     },
     itemCategory: {
@@ -105,7 +69,7 @@ const VerticalMenu: React.FC<VerticalMenuProps> = (props) => {
         <Drawer variant="permanent" {...other}>
             <List disablePadding>
                 <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
-                    Spark Equation Hub
+                    <Link to="/">Spark Equation Hub</Link>
                 </ListItem>
                 <ListItem className={clsx(classes.item, classes.itemCategory)}>
                     <ListItemIcon className={classes.itemIcon}>
@@ -116,10 +80,10 @@ const VerticalMenu: React.FC<VerticalMenuProps> = (props) => {
                             primary: classes.itemPrimary,
                         }}
                     >
-                        Project Overview
+                        Project Dashboard
           </ListItemText>
                 </ListItem>
-                {categories.map(({ id, children }) => (
+                {menu.map(({ id, children }) => (
                     <Fragment key={id}>
                         <ListItem className={classes.categoryHeader}>
                             <ListItemText
@@ -130,13 +94,13 @@ const VerticalMenu: React.FC<VerticalMenuProps> = (props) => {
                                 {id}
                             </ListItemText>
                         </ListItem>
-                        {children.map(({ id: childId, icon, to, isExact }) => (
+                        {children.map(({ id: childId, Icon, to, isExact }) => (
                             <ListItem
                                 key={childId}
                                 button
                                 className={clsx(classes.item)}
                             >
-                                <ListItemIcon className={classes.itemIcon}>{icon}</ListItemIcon>
+                                <ListItemIcon className={classes.itemIcon}><Icon /></ListItemIcon>
                                 <ListItemText
                                     classes={{
                                         primary: classes.itemPrimary,

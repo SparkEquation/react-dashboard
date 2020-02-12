@@ -5,13 +5,22 @@ import 'typeface-roboto';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { MenuContext } from './context/context';
+import { MenuContext } from './context/menuContext';
 import { ThemeProvider } from '@material-ui/core';
 import baseTheme from './baseTheme';
+import { TMenuState } from './interfaces/index';
 
 
 const Main: React.FC<{}> = () => {
-    const [menuState, setMenuState] = useState();
+    const [menuState, setMenuState] = useState<TMenuState>({
+        currentPage: 'authentication',
+        currentHeader: 'Authentication',
+        tabs: {
+            authenticationPage: {
+                value: 1
+            }
+        }
+    });
     return (
         <BrowserRouter>
             <MenuContext.Provider value={{ menuState, setMenuState }}>
