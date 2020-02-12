@@ -15,7 +15,8 @@ const DashboardContent: React.FC<{}> = () => {
                     path={"/dashboard/authentication"}
                     component={Authentication} />
                 <Redirect
-                    from="/"
+                    exact
+                    from="/dashboard"
                     to="/dashboard/authentication" />
             </Switch >
         </div>

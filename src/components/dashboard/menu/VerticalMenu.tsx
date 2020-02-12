@@ -24,7 +24,6 @@ type TCategoryChild = {
     id: string,
     icon: JSX.Element,
     to: string,
-    active?: boolean,
     isExact?: boolean
 }
 
@@ -37,20 +36,16 @@ const categories: TCategory[] = [
     {
         id: 'Develop',
         children: [
-            { id: 'Authentication', icon: <PeopleIcon />, active: true, to: '/dashboard/authentication' },
-            { id: 'Database', icon: <DnsRoundedIcon />, to: '#' },
-            { id: 'Storage', icon: <PermMediaOutlinedIcon />, to: '#' },
-            { id: 'Hosting', icon: <PublicIcon />, to: '#' },
-            { id: 'Functions', icon: <SettingsEthernetIcon />, to: '#' },
-            { id: 'ML Kit', icon: <SettingsInputComponentIcon />, to: '#' },
+            { id: 'Authentication', icon: <PeopleIcon />, to: '/dashboard/authentication' },
+            { id: 'Database', icon: <DnsRoundedIcon />, to: '/dashboard/database' },
+            { id: 'UI Kit', icon: <SettingsInputComponentIcon />, to: '/dashboard/uikit' },
         ],
     },
     {
         id: 'Quality',
         children: [
             { id: 'Analytics', icon: <SettingsIcon />, to: '/dashboard/analytics' },
-            { id: 'Performance', icon: <TimerIcon />, to: '#' },
-            { id: 'Test Lab', icon: <PhonelinkSetupIcon />, to: '#' },
+            { id: 'Performance', icon: <TimerIcon />, to: '/dashboard/analytics' },
         ],
     },
 ];
@@ -70,6 +65,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         '&:hover,&:focus': {
             backgroundColor: 'rgba(255, 255, 255, 0.08)',
         },
+        '& a': {
+            color: 'rgba(255, 255, 255, 0.7)',
+        }
     },
     itemCategory: {
         backgroundColor: '#232f3e',
@@ -132,11 +130,11 @@ const VerticalMenu: React.FC<VerticalMenuProps> = (props) => {
                                 {id}
                             </ListItemText>
                         </ListItem>
-                        {children.map(({ id: childId, icon, active, to, isExact }) => (
+                        {children.map(({ id: childId, icon, to, isExact }) => (
                             <ListItem
                                 key={childId}
                                 button
-                                className={clsx(classes.item, active && classes.itemActiveItem)}
+                                className={clsx(classes.item)}
                             >
                                 <ListItemIcon className={classes.itemIcon}>{icon}</ListItemIcon>
                                 <ListItemText
@@ -144,12 +142,14 @@ const VerticalMenu: React.FC<VerticalMenuProps> = (props) => {
                                         primary: classes.itemPrimary,
                                     }}
                                 >
-
-                                    <NavLink to={to}
-                                        exact={(isExact === undefined) ? false : isExact}>
+                                    <NavLink
+                                        to={to}
+                                        activeClassName="active"
+                                        activeStyle={{ color: '#4fc3f7' }}
+                                        exact={(isExact === undefined) ? false : isExact}
+                                    >
                                         {childId}
                                     </NavLink>
-
                                 </ListItemText>
                             </ListItem>
                         ))}
