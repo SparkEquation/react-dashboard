@@ -16,11 +16,14 @@ import KendoGrid from './grids/KendoGrid';
 
 const useStyles = makeStyles((theme: Theme) => ({
     paper: {
-        maxWidth: 936,
-        margin: 'auto',
+        // maxWidth: 936,
+        // margin: 'auto',
         marginBottom: 30,
         padding: 50,
-        overflow: 'hidden',
+        overflow: 'auto',
+        '@media (min-width: 1024px)': {
+            // maxWidth: 936,
+        }
     },
     searchBar: {
         borderBottom: '1px solid rgba(0, 0, 0, 0.12)',

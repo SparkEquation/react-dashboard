@@ -1,4 +1,7 @@
-import React, { useState, SyntheticEvent } from "react";
+import React, { useState } from "react";
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import './kendoGridStyles.css';
 import { Grid, GridColumn, GridDataStateChangeEvent } from "@progress/kendo-react-grid";
 import { DropDownList, DropDownListChangeEvent } from "@progress/kendo-react-dropdowns";
 import { process, State } from "@progress/kendo-data-query";
@@ -11,13 +14,23 @@ interface IKendoGrid {
     title: string
 }
 
-
 type TGridPage = { skip: number, take: number }
 type TGridDataState = State & {
     page: TGridPage
 }
 
+const useStyles = makeStyles((theme: Theme) => ({
+    cell: {
+        // padding: 50,
+        '@media (min-width: 1024px)': {
+            // padding: 50,
+        }
+    },
+}));
+
 const KendoGrid: React.FC<IKendoGrid> = ({ title }) => {
+
+    const classes = useStyles();
 
     const [dropDownListCategory, setDropDownListCategory] = useState<string | null>(null);
     const [gridDataState, setGridDataState] = useState<Partial<TGridDataState>>({
@@ -66,6 +79,7 @@ const KendoGrid: React.FC<IKendoGrid> = ({ title }) => {
             <Grid
                 data={process(products, gridDataState)}
                 pageable={true}
+                // resizable={true}
                 sortable={true}
                 {...gridDataState}
                 onDataStateChange={handleGridDataStateChange}
@@ -73,26 +87,22 @@ const KendoGrid: React.FC<IKendoGrid> = ({ title }) => {
                 <GridColumn
                     field="ProductName"
                     title="Product Name"
-                    width={300}
+                    className={clsx(classes.cell)}
                 />
                 <GridColumn
                     field="UnitPrice"
                     title="Price"
                     format="{0:c}"
-                    width={300}
                 />
                 <GridColumn
                     field="UnitsInStock"
                     title="Units in Stock"
-                    width={250}
                 />
                 <GridColumn
                     field="Discontinued"
                     cell={KendoCheckboxColumn}
-                    width={200}
                 />
             </Grid>
-
         </>
     );
 };

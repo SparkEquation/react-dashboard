@@ -1,0 +1,21 @@
+.k-grid {
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.k-grid table {
+    /* table-layout: fixed; */
+    /* width: inherit; */
+    /* min-width: 500px; */
+    /* border: 1px solid gray; */
+    /* display: block; */
+    /* overflow-x: auto; */
+    /* white-space: nowrap; */
+}
+
+.k-grid td, .k-grid th, .k-grid-header .k-header>.k-link {
+    /* min-width: 200px; */
+    /* overflow: scroll; */
+    /* text-overflow: unset; */
+    /* padding: 5px 10px; */
+}
