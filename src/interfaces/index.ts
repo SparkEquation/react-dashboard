@@ -4,6 +4,9 @@ export type TMenuState = {
     tabs: {
         authenticationPage: {
             value: number
+        },
+        analyticsPage: {
+            value: number
         }
     }
 }

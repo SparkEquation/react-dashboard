@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
 }));
 
-const AuthenticationPageTabs: React.FC<{}> = () => {
+const AnalyticsPageTabs: React.FC<{}> = () => {
 
     const { menuState, setMenuState } = useContext(MenuContext); const classes = useStyles();
 
@@ -39,13 +39,18 @@ const AuthenticationPageTabs: React.FC<{}> = () => {
                 textColor="inherit"
             >
                 <Tab
-                    label="Users"
+                    label="Graphs"
                     value={1}
                     {...a11yProps(0)}
                 />
                 <Tab
-                    label="Authentication method"
+                    label="Adazzle Data Grid"
                     value={2}
+                    {...a11yProps(1)}
+                />
+                <Tab
+                    label="Kendo UI Grid"
+                    value={3}
                     {...a11yProps(1)}
                 />
             </Tabs>
@@ -53,4 +58,4 @@ const AuthenticationPageTabs: React.FC<{}> = () => {
     )
 };
 
-export default AuthenticationPageTabs;
+export default AnalyticsPageTabs;

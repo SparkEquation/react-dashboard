@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import 'typeface-roboto';
+import '@progress/kendo-theme-default/dist/all.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -17,6 +18,9 @@ const Main: React.FC<{}> = () => {
         currentHeader: 'Authentication',
         tabs: {
             authenticationPage: {
+                value: 1
+            },
+            analyticsPage: {
                 value: 1
             }
         }

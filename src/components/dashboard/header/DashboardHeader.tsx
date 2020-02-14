@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { MenuContext } from '../../../context/menuContext';
 import AuthenticationPageTabs from './AuthenticationPageTabs';
+import AnalyticsPageTabs from './AnalyticsPageTabs';
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
@@ -119,6 +120,10 @@ const DashboardHeader: React.FC<HeaderProps> = (props: HeaderProps) => {
             {
                 currentPage === 'authentication' &&
                 <AuthenticationPageTabs />
+            }
+            {
+                currentPage === 'analytics' &&
+                <AnalyticsPageTabs />
             }
         </React.Fragment>
     );

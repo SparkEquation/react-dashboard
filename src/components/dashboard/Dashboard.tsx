@@ -12,7 +12,7 @@ const drawerWidth = 256;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        minHeight: '500vh',
+        minHeight: '100vh',
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {

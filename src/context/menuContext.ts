@@ -10,6 +10,9 @@ const menuContext: IMenuContext = {
         tabs: {
             authenticationPage: {
                 value: 1
+            },
+            analyticsPage: {
+                value: 1
             }
         }
     },

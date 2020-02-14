@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Authentication: React.FC<{}> = () => {
 
-    const { menuState: { tabs: { authenticationPage: { value } } } } = useContext(MenuContext);
+    const { menuState: { tabs: { analyticsPage: { value } } } } = useContext(MenuContext);
     const classes = useStyles();
 
     return (
@@ -78,7 +78,7 @@ const Authentication: React.FC<{}> = () => {
                     <div className={classes.contentWrapper}>
                         <Typography color="textSecondary" align="center">
                             No users for this project yet
-        </Typography>
+                        </Typography>
                     </div>
                 </Paper >
             </TabPanel>
